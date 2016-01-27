@@ -1,0 +1,3 @@
+[submodule "app/react-infinity"]
+	path = app/react-infinity
+	url = git@github.com:aknuds1/react-infinity.git

@@ -1,0 +1,6 @@
+node_modules/
+dist/
+concerts.json
+npm-debug.log
+settings.json
+__pycache__
