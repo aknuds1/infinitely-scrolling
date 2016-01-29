@@ -149,7 +149,6 @@ var Infinite = React.createClass({
     return {
       data: [],
       maxColumns: 100,
-      align: 'center',
       transition: '0.5s ease',
       id: null,
       className: 'infinite-container',
@@ -167,7 +166,6 @@ var Infinite = React.createClass({
   propTypes: {
     data: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
     maxColumns: React.PropTypes.number,
-    align: React.PropTypes.string,
     id: React.PropTypes.string,
     className: React.PropTypes.string,
     elementHeight: React.PropTypes.number,
@@ -201,8 +199,6 @@ var Infinite = React.createClass({
       loaded: true,
       windowWidth: global.innerWidth,
       windowHeight: global.innerHeight,
-      elementWidth: this.props.elementWidth ||
-        this.refs.element1.getDOMNode().getClientRects()[0].width,
       elementHeight: this.props.elementHeight ||
         this.refs.element1.getDOMNode().getClientRects()[0].height,
       scrollTop: global.scrollY || 0,
@@ -233,8 +229,8 @@ var Infinite = React.createClass({
           className: this.props.className,
           id: this.props.id,
           style: {
-            fontSize: '0', position: 'relative',
-            textAlign: this.props.align,
+            fontSize: '0',
+            position: 'relative',
           },
         }, this.props.data.map(function (elementData, i) {
           return React.createElement(this.props.component, {
