@@ -2,13 +2,15 @@
 let immstruct = require('immstruct')
 let ReactDom = require('react-dom')
 let Logger = require('js-logger-aknudsen')
+let h = require('react-hyperscript')
 let component = require('omniscient')
 
 let Content = require('./views/content')
-let layout = require('./layout')
 
+require('normalize.css/normalize.css')
+require('purecss/build/pure.css')
 require('./app.styl')
-require('./styles/fonts.css')
+require('./layout.styl')
 
 Logger.useDefaults({
   formatter: (messages, context) => {
@@ -21,7 +23,9 @@ let logger = Logger.get('entry')
 let structure = immstruct('state', {})
 
 let App = component('App', (cursor) => {
-  return layout.render(cursor, Content(cursor))
+  return h('div', [
+    h('#content', [Content(cursor),]),
+  ])
 })
 
 let render = () => {

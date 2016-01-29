@@ -8,9 +8,9 @@ let R = require('ramda')
 let S = require('underscore.string.fp')
 let moment = require('moment')
 let React = require('react')
-let Infinite = React.createFactory(require('../react-infinity'))
 
 let ajax = require('../ajax')
+let Infinite = React.createFactory(require('../components/react-infinity'))
 
 require('./content.styl')
 
