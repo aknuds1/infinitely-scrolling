@@ -2,31 +2,6 @@
 var React = require('react');
 let s = require('react-prefixr')
 
-/*
-- The properties I can expect:
-i) Height and width of every element. (Object with max-width or min-widths, for multiple, undefined === 100%)
-   // NOT YET: OR every single data element with its own height and width for Masonry style layouts
-   // NOT YET: OR Detect Height automatically after rendering for Masonry
-
-ii) Function to use for rendering actual content withing animated/positioned divs
-
-iii) component:[string] Element name for conatainers. Defaults to div
-
-iv) data: Array of data points (may include size data)
-
-v) Total number of elements to be shown, defaults to Array.length
-
-vi) OPTIONAL: callback for scrolling and loading elements toward the end of the dataset (for loading more via AJAX)
-
-vii) Max number of columns: Defaults to infinite.
-
-viii) Align: defaults to center
-
-ix) Callbacks for breakpoints. Given in an array
-
-xi) classname, elementClassName
-
-*/
 function realRender(direction) {
   var windowWidth = this.state.windowWidth;
   var windowHeight = this.state.windowHeight;
