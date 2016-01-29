@@ -61,6 +61,7 @@
     "react-modal": "^0.6.1",
     "react-packery-component": "^1.0.1",
     "react-prefixr": "*",
-    "underscore.string.fp": "^1.0.4"
+    "underscore.string.fp": "^1.0.4",
+    "vision": "^4.0.1"
   }
 }
