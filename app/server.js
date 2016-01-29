@@ -24,7 +24,7 @@ let server = new Hapi.Server({
     },
   },
 })
-let port = 8000
+let port = parseInt(process.env.PORT || '8000')
 server.connection({
   host: '0.0.0.0',
   port,
