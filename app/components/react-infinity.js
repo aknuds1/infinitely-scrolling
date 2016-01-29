@@ -30,44 +30,29 @@ xi) classname, elementClassName
 function realRender(direction) {
   var windowWidth = this.state.windowWidth;
   var windowHeight = this.state.windowHeight;
-  var elementWidth = this.props.mobileWidth <= windowWidth ? this.props.elementWidth :
-    this.props.elementMobileWidth;
   var elementHeight = this.props.mobileWidth <= windowWidth ? this.props.elementHeight :
     this.props.elementMobileHeight;
-  var stackElements = !!this.props.stackElements;
-  var margin = this.props.margin;
 
-  var windowX, windowY, elementX, elementY;
+  var windowX, windowY, elementY;
   if (direction === 'vertical') {
     windowX = windowWidth;
     windowY = windowHeight;
-    elementX = elementWidth;
     elementY = elementHeight;
   } else {
     windowX = windowHeight;
     windowY = windowWidth;
-    elementX = elementHeight;
     elementY = elementWidth;
   }
 
-  if (this.props.justifyOnMobile && this.props.mobileWidth > windowWidth) {
-    elementX = windowX;
-    margin = 0;
-  }
-
-  var numElements = stackElements ? Math.max(
-      1, Math.floor((windowX - margin) / (elementX + margin))) : 1;
-  var extraSpace = windowX - numElements * (elementX + margin) + margin;
-  var offset = this.props.align === 'left' ? 0 :
-               this.props.align === 'center' ? Math.round(extraSpace / 2) : extraSpace;
+  var numElements = 1;
 
   // Number of pixels the container has been scrolled from the top
   var scrollStart = this.state.scrollTop - this.props.scrollDelta;
   console.log(`Scrolled ${this.state.scrollTop} pixels from the top`)
-  var numBefore = Math.floor((scrollStart - margin) / (elementHeight + margin));
+  var numBefore = Math.floor(scrollStart / elementHeight);
   console.log(`Number of elements before scroll start: ${numBefore}`)
-  var numVisible = Math.ceil(((numBefore * (elementY + margin)) + windowY) /
-    (elementY + margin));
+  var numVisible = Math.ceil(((numBefore * elementY) + windowY) /
+    elementY);
   console.log(`Number of visible elements: ${numVisible}`)
 
   // Keep some extra elements before and after visible elements
@@ -89,14 +74,11 @@ function realRender(direction) {
         column = Math.floor(index / numElements);
       }
       var id = obj.id != null ? obj.id : obj._id;
-      var xOffset = (offset + column * (elementWidth + margin));
-      var yOffset = (margin + row * (elementHeight + margin));
-      console.log(`X offset: ${xOffset}, y offset: ${yOffset}`)
+      var yOffset = (row * elementHeight);
       var subContainer = SubContainer(
         {
           key: id,
-          transform: 'translate(' + xOffset  + 'px, ' + yOffset + 'px)',
-          width: elementWidth + 'px',
+          transform: 'translate(0, ' + yOffset + 'px)',
           height: elementHeight + 'px',
         },
         this.props.childComponent(obj)
@@ -110,8 +92,7 @@ function realRender(direction) {
   return React.createElement(this.props.containerComponent,
     {
       className: 'infinite-container', style: {
-        height: (margin + (elementHeight + margin) *
-          Math.ceil(this.props.data.length / numElements)) + 'px',
+        height: (elementHeight * Math.ceil(this.props.data.length / numElements)) + 'px',
         width: '100%',
         position: 'relative',
       },
@@ -177,11 +158,9 @@ var Infinite = React.createClass({
       containerComponent: 'div',
       mobileWidth: 480,
       justifyOnMobile: true,
-      margin: 0,
       scrollDelta: 0,
       direction: 'vertical',
       preRender: false,
-      stackElements: true,
     };
   },
 
@@ -192,15 +171,12 @@ var Infinite = React.createClass({
     id: React.PropTypes.string,
     className: React.PropTypes.string,
     elementHeight: React.PropTypes.number,
-    elementWidth: React.PropTypes.number,
     mobileWidth: React.PropTypes.number,
     elementMobileHeight: React.PropTypes.number,
     elementMobileWidth: React.PropTypes.number,
-    margin: React.PropTypes.number,
     justifyOnMobile: React.PropTypes.bool,
     preRender: React.PropTypes.bool,
     scrollDelta: React.PropTypes.number,
-    stackElements: React.PropTypes.bool,
   },
 
   getInitialState: function () {
