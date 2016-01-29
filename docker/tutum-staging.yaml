@@ -1,0 +1,7 @@
+infinitely-scrolling:
+  image: tutum.co/aknuds1/infinitely-scrolling
+  tags:
+    - infinitely-scrolling
+  ports:
+    - "80:80"
+  restart: always
