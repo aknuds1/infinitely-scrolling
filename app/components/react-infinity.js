@@ -8,13 +8,11 @@ function realRender(direction) {
   var elementHeight = this.props.mobileWidth <= windowWidth ? this.props.elementHeight :
     this.props.elementMobileHeight;
 
-  var windowX, windowY, elementY;
+  var windowY, elementY;
   if (direction === 'vertical') {
-    windowX = windowWidth;
     windowY = windowHeight;
     elementY = elementHeight;
   } else {
-    windowX = windowHeight;
     windowY = windowWidth;
     elementY = elementWidth;
   }
@@ -26,8 +24,7 @@ function realRender(direction) {
   console.log(`Scrolled ${this.state.scrollTop} pixels from the top`)
   var numBefore = Math.floor(scrollStart / elementHeight);
   console.log(`Number of elements before scroll start: ${numBefore}`)
-  var numVisible = Math.ceil(((numBefore * elementY) + windowY) /
-    elementY);
+  var numVisible = Math.ceil((numBefore * elementY + windowY) / elementY);
   console.log(`Number of visible elements: ${numVisible}`)
 
   // Keep some extra elements before and after visible elements
