@@ -205,4 +205,4 @@ function PackeryComponent(React) {
     })
 }
 
-module.exports = PackeryComponent;
+window.PackeryComponent = PackeryComponent;
