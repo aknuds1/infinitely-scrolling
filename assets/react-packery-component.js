@@ -20,9 +20,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-var isBrowser = (typeof window !== 'undefined');
-var Packery = isBrowser ? window.Packery || require('packery') : null;
-var imagesloaded = isBrowser ? require('imagesloaded') : null;
+var Packery = window.Packery;
+var imagesloaded = window.imagesLoaded;
 var refName = 'packeryContainer';
 
 function PackeryComponent(React) {
