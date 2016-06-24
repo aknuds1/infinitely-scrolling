@@ -1,5 +1,5 @@
 'use strict';
-var React = require('react');
+var React = require('react')
 let s = require('react-prefixr')
 
 function realRender(direction) {
@@ -154,7 +154,7 @@ var Infinite = React.createClass({
       scrollTop: 0,
       windowWidth: this.props.windowWidth || 800,
       windowHeight: this.props.windowHeight || 600,
-      loaded: false,
+      isLoaded: false,
       extra: {
         count: 0,
       },
@@ -168,7 +168,7 @@ var Infinite = React.createClass({
     this.onScroll()
 
     this.setState({
-      loaded: true,
+      isLoaded: true,
       windowWidth: global.innerWidth,
       windowHeight: global.innerHeight,
       elementHeight: this.props.elementHeight ||
@@ -194,8 +194,8 @@ var Infinite = React.createClass({
     global.removeEventListener('scroll', this.onScroll);
   },
 
-  render: function(){
-    if (!this.state.loaded) {
+  render: function () {
+    if (!this.state.isLoaded) {
       return this.props.preRender ? React.createElement(this.props.containerComponent,
         {
           className: this.props.className,
@@ -210,15 +210,15 @@ var Infinite = React.createClass({
           }, React.createElement(this.props.childComponent, elementData));
         }.bind(this)))
         : null;
+    } else {
+      var direction = this.props.direction;
+      if (direction !== 'horizontal' && direction !== 'vertical') {
+        direction = 'vertical';
+        console.warn('the prop `direction` must be either "vertical" or "horizontal". It is set to',
+          direction);
+      }
+      return realRender.call(this, direction);
     }
-
-    var direction = this.props.direction;
-    if (direction !== 'horizontal' && direction !== 'vertical') {
-      direction = 'vertical';
-      console.warn('the prop `direction` must be either "vertical" or "horizontal". It is set to',
-        direction);
-    }
-    return realRender.call(this, direction);
   },
 });
 
