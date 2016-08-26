@@ -13,8 +13,7 @@ def _error(msg):
 
 try:
     subprocess.check_call([
-        './node_modules/.bin/webpack-dev-server', '-d', '--inline',
-        '--content-base', 'public',
+        './node_modules/.bin/webpack-dev-server', '-d', '--inline', '--content-base', 'public',
     ])
 except subprocess.CalledProcessError:
     _error('Webpack dev server failed')

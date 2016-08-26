@@ -3,6 +3,7 @@ global.__IS_BROWSER__ = false
 
 let Hapi = require('hapi')
 let R = require('ramda')
+let S = require('underscore.string.fp')
 let path = require('path')
 let pug = require('pug')
 let immstruct = require('immstruct')
@@ -24,7 +25,7 @@ let server = new Hapi.Server({
     },
   },
 })
-let port = parseInt(process.env.PORT || '8000')
+let port = !S.isBlank(process.env.PORT) ? parseInt(process.env.PORT) : 8000
 server.connection({
   host: '0.0.0.0',
   port,
@@ -36,7 +37,7 @@ server.register(R.map((x) => {return require(x)}, ['inert', 'vision',]), (err) =
   }
 
   server.views({
-    engines: { pug, },
+    engines: {pug,},
     path: __dirname + '/templates',
     compileOptions: {
       pretty: true,
@@ -54,7 +55,10 @@ server.register(R.map((x) => {return require(x)}, ['inert', 'vision',]), (err) =
     method: ['GET',],
     path: '/bundle.js',
     handler: {
-      file: path.join(__dirname, '../dist/bundle.js'),
+      file: {
+        path: path.join(__dirname, '../dist/bundle.js'),
+        confine: false,
+      },
     },
   })
   server.route({
