@@ -44,7 +44,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
-    "hapi": "^14.0",
+    "hapi": "^15.0.1",
     "hapi-auth-cookie": "^6.0",
     "html-to-react": "^1.0",
     "immstruct": "^2.0.0",
