@@ -41,7 +41,7 @@
     "stylus-loader": "^2.3",
     "url-loader": "^0.5.6",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.0"
+    "webpack-dev-server": "^1.16.1"
   },
   "dependencies": {
     "hapi": "^15.0.3",
