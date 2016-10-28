@@ -28,7 +28,7 @@
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-node5": "^11.0",
     "css-loader": "^0.25.0",
-    "eslint": "^3.7.1",
+    "eslint": "^3.9.0",
     "file-loader": "^0.9",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.1",
