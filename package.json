@@ -60,7 +60,7 @@
     "react-hyperscript": "^2.2.0",
     "react-modal": "^1.5.2",
     "react-packery-component": "^1.0.1",
-    "react-prefixr": "*",
+    "react-prefixr": "0.1.0",
     "stylus": "^0.54.5",
     "underscore.string.fp": "^1.0.4",
     "vision": "^4.0.1"
