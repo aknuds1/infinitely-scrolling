@@ -57,7 +57,7 @@
     "ramda": "^0.22",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-hyperscript": "^2.2.0",
+    "react-hyperscript": "^2.4.2",
     "react-modal": "^1.5.2",
     "react-packery-component": "^1.0.1",
     "react-prefixr": "0.1.0",
