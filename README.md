@@ -1,4 +1,6 @@
 # [InfinitelyScrolling](http://infinitely-scrolling.infinitely-scrolling.aknuds1.svc.tutum.io/)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/aknuds1/infinitely-scrolling.svg)](https://greenkeeper.io/)
 Test of infinite scrolling with React.
 
 ## Installation
